@@ -8,7 +8,7 @@ Middleware for Ruby
 gem install underware
 ```
 
-## Usage ##
+## 2-Minute Tour ##
 
 If your object defines a ```#call``` method, then it can be used as middleware.  For example:
 
@@ -36,7 +36,7 @@ Now that we've defined some middleware, let's chain it together:
 ```ruby
 require 'underware'
 
-f = Underware.fold(Add.new(1), Add.new(-2), Add.new(3)) do |x|
+f = Underware(Add.new(1), Add.new(-2), Add.new(3)) do |x|
   puts "THE VALUE IS: #{x}"
 end
 
@@ -54,3 +54,18 @@ AFTER:  2 + 3
 AFTER:  4 + -2
 AFTER:  3 + 1
 ```
+
+Note that the block to the ```#Underware``` method is just for convenience.  You could have also written:
+
+```ruby
+require 'underware'
+
+g = Proc.new do |x|
+  puts "THE VALUE IS: #{x}"
+end
+
+f = Underware(Add.new(1), Add.new(-2), Add.new(3), g)
+
+f.call(3)
+```
+

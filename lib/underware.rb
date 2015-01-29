@@ -31,8 +31,8 @@ module Underware
     end
   end
 
-  def fold_underware(*args, &block)
-    return fold_underware(*args, block) if block_given?
+  def fold_underware(args, &block)
+    return fold_underware([*args, block]) if block_given?
 
     args.reverse_each.inject do |folded, mw|
       Folded.new(mw, folded)
@@ -46,3 +46,10 @@ module Underware
   end
 
 end
+
+
+def Underware(*args, &block)
+  Underware.fold(args, &block)
+end
+
+
