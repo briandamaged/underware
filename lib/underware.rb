@@ -21,7 +21,7 @@ module Underware
 
     def call(*args)
       left.call(*args) do |*result|
-        right.call(*args)
+        right.call(*result)
       end
     end
   end
