@@ -9,5 +9,7 @@ Gem::Specification.new do |s|
   s.email       = 'constructible.truth@gmail.com'
   s.files       = Dir["lib/**/*.rb"]
   s.license     = "MIT"
+
+  s.homepage    = "https://github.com/briandamaged/underware"
 end
 
