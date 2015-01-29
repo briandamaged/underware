@@ -8,6 +8,11 @@ module Underware
     def call(*args)
       raise NotImplementedError
     end
+
+    def to_proc
+      __other = self
+      ->(*args){ __other.call(*args) }
+    end
   end
 
 
