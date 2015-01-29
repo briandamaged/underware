@@ -1,7 +1,7 @@
 
 Gem::Specification.new do |s|
   s.name        = 'underware'
-  s.version     = '1.0.0.alpha.2'
+  s.version     = '1.0.0'
   s.date        = '2015-01-28'
   s.summary     = "Middleware for Ruby"
   s.description = "Middleware for Ruby"
