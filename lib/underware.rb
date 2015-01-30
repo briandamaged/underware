@@ -31,25 +31,32 @@ module Underware
     end
   end
 
-  def fold_underware(args, &block)
-    return fold_underware([*args, block]) if block_given?
+  def fold_underware(mws, &block)
+    return fold_underware([*mws, block]) if block_given?
 
-    args.reverse_each.inject do |folded, mw|
+    mws.reverse_each.inject do |folded, mw|
       Folded.new(mw, folded)
     end
   end
   module_function :fold_underware
 
 
+  def exec_underware(mws, *args, &block)
+    fold_underware(mws, &block).call(*args)
+  end
+  module_function :exec_underware
+
+
   class << self
     alias_method :fold, :fold_underware
+    alias_method :exec, :exec_underware
   end
 
 end
 
 
-def Underware(*args, &block)
-  Underware.fold(args, &block)
+def Underware(mws, *args, &block)
+  Underware.exec(mws, *args, &block)
 end
 
 
