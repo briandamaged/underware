@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/underware.svg)](http://badge.fury.io/rb/underware)
+
 # Underware #
 
 Middleware for Ruby
