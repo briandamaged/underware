@@ -71,3 +71,25 @@ f = Underware.fold([Add.new(1), Add.new(-2), Add.new(3), g])
 f.call(3)
 ```
 
+Wouldn't it be nice if you could somehow fold the middleware and call it at the same time?  Well, guess what -- you can!
+
+
+```ruby
+require 'underware'
+
+Underware.exec_underware([Add.new(1), Add.new(-2), Add.new(3)], 3) do |x|
+  puts "THE VALUE IS: #{x}"
+end
+```
+
+In reality, the ```Underware#exec_underware``` is really intended to be used as a mixin (ie: ```include Underware```).  Otherwise, it's a lot to type!  Fortunately, there's another shortcut:
+
+```ruby
+require 'underware'
+
+# This is the same as Underware.exec_underware
+Underware([Add.new(1), Add.new(-2), Add.new(3)], 3) do |x|
+  puts "THE VALUE IS: #{x}"
+end
+```
+
