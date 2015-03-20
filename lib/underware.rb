@@ -1,5 +1,7 @@
 
 module Underware
+  # Just a generic do-nothing lambda
+  DoNothing = ->(*args){ }
 
   # Base class for middleware.  Basically, it
   # just demonstrates the interface that you
@@ -34,7 +36,7 @@ module Underware
   def fold_underware(mws, &block)
     return fold_underware([*mws, block]) if block_given?
 
-    mws.reverse_each.inject do |folded, mw|
+    mws.reverse_each.inject(DoNothing) do |folded, mw|
       Folded.new(mw, folded)
     end
   end
