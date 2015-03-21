@@ -1,4 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/underware.svg)](http://badge.fury.io/rb/underware)
+[![Build Status](https://travis-ci.org/briandamaged/underware.svg)](https://travis-ci.org/briandamaged/underware)
 
 # Underware #
 
